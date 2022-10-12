@@ -1,17 +1,16 @@
 
 # Cargando la base de datos preexp 
-# cambio
 
 library(readxl)
-preexp <- read_excel("MEGA/Bases de datos/Fertilización de Azolla con Curinaza/preexp.xlsx", 
+preexp <- read_excel("~/MEGA/Daniel Mancilla. FertilizaciÃ³n de Azolla con Curinaza/preexp.xlsx", 
                      range = "A1:G6")
 View(preexp)
 
-# Rendimiento promedio g/m2/día en BH
+# Rendimiento promedio g/m2/dÃ­a en BH
 
-t.test(preexp$`Rendimiento/día BH`)  # Media e IC al 95% para la media
+t.test(preexp$`Rendimiento/d?a BH`)  # Media e IC al 95% para la media
 
-# Gráfico de líneas "Obtención de Azolla en Base Húmeda"
+# GrÃ¡fico de lÃ­neas "Obtencion de Azolla en Base HÃºmeda"
 
 datos <- data.frame("Azolla sembrada" = preexp$`Cantidad sembrada (g)`, 
                     "Azolla cosechada" = preexp$`Azolla obtenida (g)`, 
@@ -19,9 +18,9 @@ datos <- data.frame("Azolla sembrada" = preexp$`Cantidad sembrada (g)`,
 View(datos)
 
 
-matplot(preexp$`Día de cosecha`, datos, , type = "l", 
-        main = "Obtención de Azolla en Base Húmeda", 
-        xlab = "Cosecha (días)", ylab = "Cantidad (g)",
+matplot(preexp$`D?a de cosecha`, datos, , type = "l", 
+        main = "Obtenci?n de Azolla en Base H?meda", 
+        xlab = "Cosecha (d?as)", ylab = "Cantidad (g)",
         col = c("blue","red", "green"),
         lty = 2, lwd = 2, xaxt = "n", las = 1)
 
@@ -39,21 +38,21 @@ axis(1, at = c(8, 16, 24, 32, 40))
        horiz = TRUE,
        bty = "n")                
 
-# Rendimiento promedio g/m2/día en MS
+# Rendimiento promedio g/m2/d?a en MS
   
-t.test(preexp$`Rendimiento/día MS`)  # Media e IC al 95% para la media 
+t.test(preexp$`Rendimiento/d?a MS`)  # Media e IC al 95% para la media 
   
 
-# Gráfico de líneas "Estimación de Azolla en Materia seca"  
+# Gr?fico de l?neas "Estimaci?n de Azolla en Materia seca"  
 
 datos_seca <- data.frame("Rendimiento obtenido en base humeda" = preexp$`Rendimiento BH (g)`,
                          "Rendimiento obtenido en materia seca" = preexp$`Rendimiento MS (g)`) 
 View(datos_seca)
 
 
-matplot(preexp$`Día de cosecha`, datos_seca, , type = "l", 
-        main = "Estimación del rendimiento de Azolla en Materia Seca",
-        xlab = "Cosecha (días)", ylab = "Cantidad (g)",
+matplot(preexp$`D?a de cosecha`, datos_seca, , type = "l", 
+        main = "Estimaci?n del rendimiento de Azolla en Materia Seca",
+        xlab = "Cosecha (d?as)", ylab = "Cantidad (g)",
         col = c("blue","red"),
         lty = 2, lwd = 2, xaxt = "n", yaxt = "n", ylim = c(0, 5000))
 
@@ -74,16 +73,15 @@ legend(x = "top",
        bty = "n")                
 
 
-# Comparación de la dosificación con estiércol de cuy
-
+# Comparacion de la dosificacion con esti?rcol de cuy
 
 library(readxl)
-exp <- read_excel("MEGA/Bases de datos/Fertilización de Azolla con Curinaza/exp.xlsx", 
-                  range = "A1:B10")
+exp <- read_excel("~/MEGA/Daniel Mancilla. FertilizaciÃ³n de Azolla con Curinaza/exp.xlsx", 
+                     range = "A1:G6")
 View(exp)
 
 
-# Librerías para el análisis
+# Librer?as para el an?lisis
 library(datasets)
 library(ggplot2)
 library(multcompView)
@@ -119,11 +117,11 @@ Tk$cld <- cld$Letters
 
 print(Tk)
 
-# Gráfico de cajas y bigotes
+# Gr?fico de cajas y bigotes
 
 
 box_plot <- boxplot(exp$Rendimiento~exp$Tratamiento, main = "Rendimiento de Azolla por tratamiento",
-                    xlab = "Estiércol de cuy", ylab = "Rendimiento (g)",
+                    xlab = "Esti?rcol de cuy", ylab = "Rendimiento (g)",
                     col = c("green","blue","red"), ylim=c(min(exp$Rendimiento) , 1.1*max(exp$Rendimiento)),
                     horizontal = F, names = c("T0", "T1", "T2"), las = 1)
 
@@ -168,7 +166,7 @@ t.test(Tratamiento_0)
 t.test(Tratamiento_1)
 t.test(Tratamiento_2)
 
-# Media e IC al 95% para la media por tratamiento (g/m2/día)
+# Media e IC al 95% para la media por tratamiento (g/m2/d?a)
 
 Tratamiento_0 <- subset((exp$Rendimiento/21/2), exp$Tratamiento==0)
 Tratamiento_1 <- subset((exp$Rendimiento/21/2), exp$Tratamiento==1)
