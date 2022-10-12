@@ -8,23 +8,23 @@ View(preexp)
 
 # Rendimiento promedio g/m2/día en BH
 
-t.test(preexp$`Rendimiento/d?a BH`)  # Media e IC al 95% para la media
+t.test(preexp$`Rendimiento/día BH`)  # Media e IC al 95% para la media
 
 # Gráfico de líneas "Obtencion de Azolla en Base Húmeda"
 
-datos <- data.frame("Azolla sembrada" = preexp$`Cantidad sembrada (g)`, 
+datos <- data.frame("Azolla sembrada" = preexp$`Azolla sembrada (g)`, 
                     "Azolla cosechada" = preexp$`Azolla obtenida (g)`, 
                     "Rendimiento obtenido en base humeda" = preexp$`Rendimiento BH (g)`)      
 View(datos)
 
 
-matplot(preexp$`D?a de cosecha`, datos, , type = "l", 
-        main = "Obtenci?n de Azolla en Base H?meda", 
-        xlab = "Cosecha (d?as)", ylab = "Cantidad (g)",
+matplot(preexp$`Día de cosecha`, datos, , type = "l", 
+        main = "Obtención de Azolla en Base Húmeda", 
+        xlab = "Cosecha (días)", ylab = "Cantidad (g)",
         col = c("blue","red", "green"),
         lty = 2, lwd = 2, xaxt = "n", las = 1)
 
-  grid(nx = NA, ny = NULL, lwd = 1, lty = 1, col = ("gray"))
+grid(nx = NA, ny = NULL, lwd = 1, lty = 1, col = ("gray"))
 
 axis(1, at = c(8, 16, 24, 32, 40))
 
@@ -38,9 +38,9 @@ axis(1, at = c(8, 16, 24, 32, 40))
        horiz = TRUE,
        bty = "n")                
 
-# Rendimiento promedio g/m2/d?a en MS
+# Rendimiento promedio g/m2/día en MS
   
-t.test(preexp$`Rendimiento/d?a MS`)  # Media e IC al 95% para la media 
+t.test(preexp$`Rendimiento/día MS`)  # Media e IC al 95% para la media 
   
 
 # Gr?fico de l?neas "Estimaci?n de Azolla en Materia seca"  
@@ -50,9 +50,9 @@ datos_seca <- data.frame("Rendimiento obtenido en base humeda" = preexp$`Rendimi
 View(datos_seca)
 
 
-matplot(preexp$`D?a de cosecha`, datos_seca, , type = "l", 
+matplot(preexp$`día de cosecha`, datos_seca, , type = "l", 
         main = "Estimaci?n del rendimiento de Azolla en Materia Seca",
-        xlab = "Cosecha (d?as)", ylab = "Cantidad (g)",
+        xlab = "Cosecha (días)", ylab = "Cantidad (g)",
         col = c("blue","red"),
         lty = 2, lwd = 2, xaxt = "n", yaxt = "n", ylim = c(0, 5000))
 
@@ -166,7 +166,7 @@ t.test(Tratamiento_0)
 t.test(Tratamiento_1)
 t.test(Tratamiento_2)
 
-# Media e IC al 95% para la media por tratamiento (g/m2/d?a)
+# Media e IC al 95% para la media por tratamiento (g/m2/día)
 
 Tratamiento_0 <- subset((exp$Rendimiento/21/2), exp$Tratamiento==0)
 Tratamiento_1 <- subset((exp$Rendimiento/21/2), exp$Tratamiento==1)
